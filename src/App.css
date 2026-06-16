@@ -41,3 +41,18 @@ hr {
 p {
   color: #374151;
 }
+.job-card {
+  background: white;
+  padding: 15px;
+  margin: 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.job-card button {
+  margin-right: 10px;
+}
+.job-card:hover {
+  transform: translateY(-5px);
+  transition: 0.3s;
+}

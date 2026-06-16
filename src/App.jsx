@@ -17,6 +17,42 @@ function App() {
     title: "Data Analyst",
     company: "XYZ Solutions",
     location: "Bangalore"
+  },
+  {
+    id: 3,
+    title: "Backend Developer",
+    company: "TechSoft",
+    location: "Hyderabad"
+  },
+  {
+    id: 4,
+    title: "Full Stack Developer",
+    company: "Infosys",
+    location: "Pune"
+  },
+  {
+    id: 5,
+    title: "UI UX Designer",
+    company: "Creative Labs",
+    location: "Mumbai"
+  },
+  {
+    id: 6,
+    title: "Python Developer",
+    company: "Wipro",
+    location: "Chennai"
+  },
+  {
+    id: 7,
+    title: "React Developer",
+    company: "TCS",
+    location: "Coimbatore"
+  },
+  {
+    id: 8,
+    title: "Data Scientist",
+    company: "Accenture",
+    location: "Bangalore"
   }
 ];
 const filteredJobs = jobs.filter(
@@ -65,12 +101,15 @@ const addBookmark = (jobTitle) => {
       <h3>Available Jobs</h3>
 
       {filteredJobs.map((job) => (
-  <div key={job.id}>
+  <div key={job.id} className="job-card">
     <h4>{job.title}</h4>
-    <p>Company: {job.company}</p>
-    <p>Location: {job.location}</p>
+    <p>🏢 Company: {job.company}</p>
+    <p>📍 Location: {job.location}</p>
     <button onClick={() => setSelectedJob(job)}>
   View Details
+</button>
+<button>
+  Apply Now
 </button>
     <button onClick={() => addBookmark(job.title)}>
   Bookmark
