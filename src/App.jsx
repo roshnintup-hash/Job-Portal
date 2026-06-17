@@ -5,6 +5,7 @@ function App() {
   const [location, setLocation] = useState("");
   const [bookmarked, setBookmarked] = useState([]);
   const [selectedJob, setSelectedJob] = useState(null);
+  const [message,setMessage] = useState("");
   const jobs = [
   {
     id: 1,
@@ -64,8 +65,9 @@ const addBookmark = (jobTitle) => {
   setBookmarked([...bookmarked, jobTitle]);
 };
   return (
-    <div>
+    <div className="header">
       <h1>Job Portal</h1>
+      <p>Find and apply for your dream job today 🚀</p>
       <h2>Find Your Dream Job</h2>
       <input
   type="text"
@@ -82,25 +84,29 @@ const addBookmark = (jobTitle) => {
 
 <button>Search</button>
 <p>You searched for: {search}</p>
-<h3>Bookmarked Jobs</h3>
+<h3>🔖 Bookmarked Jobs ({bookmarked.length})</h3>
 
 {bookmarked.map((job, index) => (
-  <p key={index}>{job}</p>
+  <p key={index} className="bookmark-item">{job}</p>
 ))}
 
       <hr />
 
       {selectedJob && (
-  <div>
+  <div className="job-details">
     <h3>Selected Job Details</h3>
     <p>Title: {selectedJob.title}</p>
     <p>Company: {selectedJob.company}</p>
     <p>Location: {selectedJob.location}</p>
   </div>
 )}
-      <h3>Available Jobs</h3>
-
-      {filteredJobs.map((job) => (
+{message && <p className="success-message">{message}</p>}
+<h3>Available Jobs</h3>
+      <p className="job-count">
+  Total Jobs Available: {filteredJobs.length}
+</p>
+<div className="jobs-container">
+    {filteredJobs.map((job) => (
   <div key={job.id} className="job-card">
     <h4>{job.title}</h4>
     <p>🏢 Company: {job.company}</p>
@@ -108,8 +114,9 @@ const addBookmark = (jobTitle) => {
     <button onClick={() => setSelectedJob(job)}>
   View Details
 </button>
-<button>
-  Apply Now
+<button onClick={() => 
+ setMessage("Application Submitted Successfully!")}>
+ Apply Now
 </button>
     <button onClick={() => addBookmark(job.title)}>
   Bookmark
@@ -117,6 +124,7 @@ const addBookmark = (jobTitle) => {
     <hr />
   </div>
 ))}
+    </div>
     </div>
   );
 }
